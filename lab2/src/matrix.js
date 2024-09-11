@@ -1,25 +1,21 @@
 export function addMatrices(matrixA, matrixB) {
-    if (!Array.isArray(matrixA) || !Array.isArray(matrixB)) {
+    if (!Array.isArray(matrixA) || !Array.isArray(matrixB)) 
         throw new Error("Both inputs must be matrices (arrays of arrays).");
-    }
 
-    if (matrixA.length !== matrixB.length) {
+    if (matrixA.length !== matrixB.length) 
         throw new Error("Matrices must have the same number of rows.");
-    }
 
     for (let i = 0; i < matrixA.length; i++) {
-        if (matrixA[i].length !== matrixB[i].length) {
+        if (matrixA[i].length !== matrixB[i].length) 
             throw new Error("Matrices must have the same dimensions.");
-        }
     }
 
     const result = [];
 
     for (let i = 0; i < matrixA.length; i++) {
         result[i] = [];
-        for (let j = 0; j < matrixA[i].length; j++) {
+        for (let j = 0; j < matrixA[i].length; j++) 
             result[i][j] = matrixA[i][j] + matrixB[i][j];
-        }
     }
 
     return result;
@@ -27,33 +23,29 @@ export function addMatrices(matrixA, matrixB) {
 
 
 export function multiplyMatrices(matrixA, matrixB) {
-    if (!Array.isArray(matrixA) || !Array.isArray(matrixB)) {
+    if (!Array.isArray(matrixA) || !Array.isArray(matrixB))
         throw new Error("Both inputs must be matrices (arrays of arrays).");
-    }
 
     const numColsA = matrixA[0].length;
     const numRowsB = matrixB.length;
 
-    if (numColsA !== numRowsB) {
+    if (numColsA !== numRowsB)
         throw new Error("Number of columns in matrix A must equal number of rows in matrix B.");
-    }
 
     const result = Array(matrixA.length).fill(null).map(() => Array(matrixB[0].length).fill(0));
 
     for (let i = 0; i < matrixA.length; i++) {
         for (let j = 0; j < matrixB[0].length; j++) {
-            for (let k = 0; k < matrixA[0].length; k++) {
+            for (let k = 0; k < matrixA[0].length; k++)
                 result[i][j] += matrixA[i][k] * matrixB[k][j];
-            }
         }
     }
 
     return result;
 }
 export function transposeMatrix(matrix) {
-    if (!Array.isArray(matrix) || !matrix.every(row => Array.isArray(row))) {
+    if (!Array.isArray(matrix) || !matrix.every(row => Array.isArray(row)))
         throw new Error("Input must be a matrix (an array of arrays).");
-    }
 
     const numRows = matrix.length;
     const numCols = matrix[0].length;
@@ -61,28 +53,23 @@ export function transposeMatrix(matrix) {
     const result = Array(numCols).fill(null).map(() => Array(numRows));
 
     for (let i = 0; i < numRows; i++) {
-        for (let j = 0; j < numCols; j++) {
+        for (let j = 0; j < numCols; j++)
             result[j][i] = matrix[i][j];
-        }
     }
 
     return result;
 }
 
 export function determinant(matrix) {
-    if (!Array.isArray(matrix) || matrix.length !== matrix[0].length) {
+    if (!Array.isArray(matrix) || matrix.length !== matrix[0].length)
         throw new Error("Determinant is only defined for square matrices.");
-    }
 
     const n = matrix.length;
 
-    if (n === 1) {
-        return matrix[0][0];
-    }
+    if (n === 1) return matrix[0][0];
 
-    if (n === 2) {
+    if (n === 2)
         return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
-    }
 
     let det = 0;
 
@@ -101,14 +88,12 @@ function roundToPrecision(value, precision = 10) {
 export function inverseMatrix(matrix) {
     const n = matrix.length;
 
-    if (matrix.length !== matrix[0].length) {
+    if (matrix.length !== matrix[0].length)
         throw new Error("Inverse is only defined for square matrices.");
-    }
 
     const det = determinant(matrix);
-    if (det === 0) {
+    if (det === 0)
         throw new Error("Matrix is not invertible (determinant is zero).");
-    }
 
     if (n === 2) {
         const [[a, b], [c, d]] = matrix;
