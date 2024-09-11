@@ -9,5 +9,5 @@ Inverse matrix
 3. Run tests                                -- y
 4. Implementation of minimal functionality  -- y
 5. Re-run tests                             -- y
-6. Refactoring                              -- x
-5. Re-run tests                             -- x
+6. Refactoring                              -- y
+5. Re-run tests                             -- y
