@@ -1,29 +1,47 @@
 import { expect } from 'chai';
-import { add, subtract, multiply, divide } from '../src/calculator.js';
+import Mtrx from 'mtrx';
+describe('Mtrx Library - Basic Operations', function () {
 
-describe('Calculator Functions', function() {
-  it('should correctly add two numbers', function() {
-    expect(add(2, 3)).to.equal(5);
-    expect(add(-2, 3)).to.equal(1);
-    expect(add(-2, -3)).to.equal(-5);
+  describe('Addition (Mtrx.add)', function () {
+    it('should correctly add two matrices', function () {
+      const m = new Mtrx([[1, 0, 0], [0, 1, 0], [0, 0, 1]]);
+      const n = new Mtrx([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+      const result = Mtrx.add(m, n);
+      console.log(result)
+      expect(result).to.deep.equal(new Mtrx([[2, 2, 3], [4, 6, 6], [7, 8, 10]]));
+    });
   });
 
-  it('should correctly subtract two numbers', function() {
-    expect(subtract(5, 3)).to.equal(2);
-    expect(subtract(-2, 3)).to.equal(-5);
-    expect(subtract(-5, -3)).to.equal(-2);
+  describe('Subtraction', function () {
+    it('should correctly subtract two matrices', function () {
+      const m = new Mtrx([[1, 0, 0], [0, 1, 0], [0, 0, 1]]);
+      const n = new Mtrx([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+      const result = Mtrx.sub(n, m);
+      expect(result).to.deep.equal(new Mtrx([[0, 2, 3], [4, 4, 6], [7, 8, 8]]));
+    });
   });
 
-  it('should correctly multiply two numbers', function() {
-    expect(multiply(2, 3)).to.equal(6);
-    expect(multiply(-2, 3)).to.equal(-6);
-    expect(multiply(-2, -3)).to.equal(6);
+  describe('Multiplication', function () {
+    it('should correctly multiply matrix by a scalar', function () {
+      const m = new Mtrx([[1, 0, 0], [0, 1, 0], [0, 0, 1]]);
+      const result = Mtrx.mul(m, 3);
+      expect(result).to.deep.equal(new Mtrx([[3, 0, 0], [0, 3, 0], [0, 0, 3]]));
+    });
+
+    it('should correctly multiply two matrices', function () {
+      const m = new Mtrx([[1, 0, 0], [0, 1, 0], [0, 0, 1]]);
+      const n = new Mtrx([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+      const result = Mtrx.mul(m, n);
+      expect(result).to.deep.equal(new Mtrx([[1, 2, 3], [4, 5, 6], [7, 8, 9]]));
+    });
   });
 
-  it('should correctly divide two numbers', function() {
-    expect(divide(6, 3)).to.equal(2);
-    expect(divide(-6, 3)).to.equal(-2);
-    expect(divide(-6, -3)).to.equal(2);
-    expect(divide(1, 0)).to.be.NaN;
+  describe('Division', function () {
+    it('should correctly divide matrix by another matrix (element-wise)', function () {
+      const m = new Mtrx([[1, 0, 0], [0, 1, 0], [0, 0, 1]]);
+      const n = new Mtrx([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+      const result = Mtrx.div(n, m);
+      expect(result).to.deep.equal(new Mtrx([[1, 2, 3], [4, 5, 6], [7, 8, 9]]));
+    });
   });
 });
