@@ -8,8 +8,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "description": "",
+  "devDependencies": {
     "sinon": "^19.0.2"
-  },
-  "description": ""
+  }
 }
