@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "chai": "^5.1.1",
     "sinon": "^19.0.2"
   }
 }
