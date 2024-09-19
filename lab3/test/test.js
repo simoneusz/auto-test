@@ -6,7 +6,8 @@ describe('Matrix Class with sinon.mock Tests', function () {
     let mock;
 
     beforeEach(function () {
-        matrixInstance = new matrix(3);
+        matrixInstance = new matrix(2);
+        console.log(matrixInstance);
         mock = sinon.mock(matrixInstance);
     });
 
@@ -18,13 +19,10 @@ describe('Matrix Class with sinon.mock Tests', function () {
         mock.expects("get_rows").atLeast(1);
         //mock.expects("get_cols").atLeast(1);
         mock.expects("get_cols").never();
-
-        matrixInstance.set(0, 0, 0);
-        matrixInstance.set(0, 1, 0);
-        matrixInstance.set(0, 2, 0);
-
-        matrixInstance.exists_zero_row();
-
+        
+        const result = matrixInstance.exists_zero_row();
+        console.log("ZERO ROWS "  + result);
+        expect(result).to.be.true;
         mock.verify();
     });
 
