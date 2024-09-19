@@ -1,14 +1,9 @@
-const { gauss, read_input } = require("../gauss_js/gauss_functions");
-const matrix = require('../gauss_js/matrix');
+import matrix from "./matrix.js"
 
-const n = 3;
+let mtrx = new matrix(2);
 
-const mtrx = read_input();
-
-
-//console.log(gauss(mtrx))
-//mtrx.printm();
-
-let mtrx2 = new matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-mtrx2.printm()
-console.log(mtrx2)
+console.log(mtrx);
+mtrx.set(0, 0, 0);
+mtrx.set(0, 1, 0);
+mtrx.set(0, 2, 0);
+console.log(mtrx.exists_zero_row());
