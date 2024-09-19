@@ -1,7 +1,6 @@
-import { expect } from 'chai';
-import matrix from '../gauss_js/matrix.js';
-import sinon from "sinon";
-
+import matrix from "../src/matrix.js"
+import { expect } from "chai"
+import sinon from "sinon"
 describe('Matrix Class with sinon.mock Tests', function () {
     let matrixInstance;
     let mock;
@@ -19,16 +18,16 @@ describe('Matrix Class with sinon.mock Tests', function () {
         mock.expects("get_rows").atLeast(1);
         //mock.expects("get_cols").atLeast(1);
         mock.expects("get_cols").never();
-    
+
         matrixInstance.set(0, 0, 0);
         matrixInstance.set(0, 1, 0);
         matrixInstance.set(0, 2, 0);
-    
+
         matrixInstance.exists_zero_row();
-    
+
         mock.verify();
     });
-    
+
 
     it('should call get_rows and get_cols when calling exists_zero_row', function () {
         mock.expects("get_rows").once().returns(3);
