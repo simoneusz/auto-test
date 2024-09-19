@@ -14,5 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "selenium-webdriver": "^4.24.1"
+  },
+  "devDependencies": {
+    "mocha": "^10.7.3"
   }
 }
